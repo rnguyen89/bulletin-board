@@ -5,6 +5,7 @@ import Board from './Board';
 import About from './About';
 
 import TopNav from './TopNav';
+import NotFound from './NotFound';
 
 
 // import './app.css';
@@ -20,6 +21,7 @@ export default function App(props) {
                     <Route exact path="/Home" component={Home} />
                     <Route exact path="/board" component={Board} />
                     <Route exact path="/About" component={About} />
+                    <Route exact path="*" component={NotFound} />
 
                 </main>
             </div>
