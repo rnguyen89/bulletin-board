@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Draggable from 'react-draggable';
 import FaPencil from 'react-icons/lib/fa/pencil';
 import FaTrash from 'react-icons/lib/fa/trash';
 import FaFloppyO from 'react-icons/lib/fa/floppy-o';
 
-class Note extends Component {
+class Note extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -16,19 +16,19 @@ class Note extends Component {
 		this.renderForm = this.renderForm.bind(this)
 		this.renderDisplay = this.renderDisplay.bind(this)
 		this.randomBetween = this.randomBetween.bind(this)
-	}
+	};
 
 	componentWillMount() {
 		this.style = {
 			right: this.randomBetween(0, window.innerWidth - 150, 'px'),
 			top: this.randomBetween(0, window.innerHeight - 150, 'px'),
 			transform: `rotate(${this.randomBetween(-25, 25, 'deg')})`
-		}
-	}
+		};
+	};
 
 	randomBetween(x, y, s) {
 		return x + Math.ceil(Math.random() * (y-x)) + s
-	}
+	};
 
 	componentDidUpdate() {
 		var textArea
@@ -36,33 +36,33 @@ class Note extends Component {
 			textArea = this._newText
 			textArea.focus()
 			textArea.select()
-		}
+		};
 
-	}
+	};
 
 	shouldComponentUpdate(nextProps, nextState) {
 		return (
 			this.props.children !== nextProps.children || this.state !== nextState
 		)
-	}
+	};
 
 	edit() {
 		this.setState({
 			editing: true
-		})
-	}
+		});
+	};
 
 	remove() {
 		this.props.onRemove(this.props.index)
-	}
+	};
 
 	save(e) {
 		e.preventDefault()
 		this.props.onChange(this._newText.value, this.props.index)
 		this.setState({
 			editing: false
-		})
-	}
+		});
+	};
 
 	renderForm() {
 		return (
@@ -74,7 +74,7 @@ class Note extends Component {
 				</form>
 			</div>
 		)
-	}
+	};
 
 	renderDisplay() {
 		return (
@@ -86,16 +86,16 @@ class Note extends Component {
 				</span>
 			</div>
 		)
-	}
+	};
 	render() {
 		return ( 
       <Draggable>
         {this.state.editing ? this.renderForm() : this.renderDisplay()}
       </Draggable>
     )
-	}
+	};
 
-}
+};
 
 export default Note
 
