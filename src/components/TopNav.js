@@ -1,5 +1,7 @@
 import React from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { LinkContainer } from "react-router-bootstrap";
+
 import FaPlus from 'react-icons/lib/fa/plus';
 
 class TopNav extends React.Component {
@@ -11,26 +13,26 @@ class TopNav extends React.Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#brand">React-Bootstrap</a>
+              <a href="/Home">Home</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={1} href="#">
-                Link
-              </NavItem>
+              <LinkContainer to="/Board">
+                <NavItem>Board</NavItem>
+              </LinkContainer>
               <NavItem eventKey={2} href="#">
                 Link
               </NavItem>
             </Nav>
             <Nav pullRight>
-              <NavItem eventKey={1} href="#">
-                Link Right
-              </NavItem>
-              <NavItem eventKey={2} href="#">
-                Link Right
-              </NavItem>
+              <LinkContainer to="/About">
+                <NavItem>About</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/Login">
+                <NavItem>Login</NavItem>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

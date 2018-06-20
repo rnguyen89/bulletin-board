@@ -2,6 +2,8 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Home from './Home';
 import Board from './Board';
+import About from './About';
+
 import TopNav from './TopNav';
 
 
@@ -13,11 +15,12 @@ export default function App(props) {
             <div className="app">
                 <header>
                 <TopNav />
-                    <h1><Link to="/">Bulletin Board</Link></h1>
                 </header>
                 <main>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/board/:boardId" component={Board} />
+                    <Route exact path="/Home" component={Home} />
+                    <Route exact path="/board" component={Board} />
+                    <Route exact path="/About" component={About} />
+
                 </main>
             </div>
         </Router>
