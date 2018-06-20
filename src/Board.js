@@ -13,18 +13,18 @@ class Board extends Component {
 		this.update = this.update.bind(this)
 		this.remove = this.remove.bind(this)
 		this.nextId = this.nextId.bind(this)
-  }
-  
-  componentWillMount() {
-    var self = this;
-    if(this.props.count) {
-      fetch(`https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`)
-        .then(res => res.json())
-        .then(json => json[0]
-                             .split('. ')
-                             .forEach(sentence => self.add(sentence.substring(0, 25))));
-    }
-  }
+	}
+
+	componentWillMount() {
+		var self = this
+		if(this.props.count) {
+			fetch(`https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`)
+				.then(response => response.json())
+				.then(json => json[0]
+								.split('. ')
+								.forEach(sentence => self.add(sentence.substring(0, 25))))
+		}
+	}
 
 	add(text) {
 		this.setState(prevState => ({
@@ -61,8 +61,8 @@ class Board extends Component {
 
 	eachNote(note, i) {
 		return (
-			<Note key={i}
-				  index={i}
+			<Note key={note.id}
+				  index={note.id}
 				  onChange={this.update}
 				  onRemove={this.remove}>
 				  {note.note}
