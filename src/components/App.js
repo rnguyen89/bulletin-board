@@ -1,30 +1,43 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Home from './Home';
-import Board from './Board';
-import About from './About';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { LinkContainer } from "react-router-bootstrap";
+import Routes from "./Routes";
+import './App.css';
 
-import TopNav from './TopNav';
-import NotFound from './NotFound';
-
-
-// import './app.css';
-
-export default function App(props) {
+export default class App extends React.Component {
+  render() {
     return (
-        <Router>
-            <div className="app">
-                <header>
-                <TopNav />
-                </header>
-                <main>
-                    <Route exact path="/Home" component={Home} />
-                    <Route exact path="/board" component={Board} />
-                    <Route exact path="/About" component={About} />
-                    <Route exact path="*" component={NotFound} />
-
-                </main>
-            </div>
-        </Router>
+      <div>
+        <Navbar inverse collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              {/* <a href="/Home">Home</a> */}
+              <Link to="/Home">Home</Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <LinkContainer to="/Board">
+                <NavItem>Board</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/About">
+                <NavItem>About</NavItem>
+              </LinkContainer>
+            </Nav>
+            <Nav pullRight>
+            <LinkContainer to="/Signup">
+                <NavItem>Signup</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/Login">
+                <NavItem>Login</NavItem>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <Routes />
+      </div>
     );
+  }
 }
