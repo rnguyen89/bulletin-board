@@ -4,8 +4,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import App from './components/App';
 
-import Board from './components/Board';
-
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
@@ -14,5 +12,3 @@ ReactDOM.render(
   </Router>, 
   document.getElementById('root'));
 registerServiceWorker();
-
-{/* <Board count={25} /> */}
